@@ -78,7 +78,10 @@ class SingleLinkList{
     public void setHead(HeroNode head) {
         this.head = head;
     }
+    public HeroNode addTwoNumbers(HeroNode l1,HeroNode l2){
 
+        return null;
+    }
     //添加链表
     public void add(HeroNode heroNode){
         //设置一个临时变量

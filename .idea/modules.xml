@@ -5,7 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/day01-稀疏算法/day01-稀疏算法.iml" filepath="$PROJECT_DIR$/day01-稀疏算法/day01-稀疏算法.iml" />
       <module fileurl="file://$PROJECT_DIR$/day02-数组模拟队列/day02-数组模拟队列.iml" filepath="$PROJECT_DIR$/day02-数组模拟队列/day02-数组模拟队列.iml" />
       <module fileurl="file://$PROJECT_DIR$/day03-环形单项链表/day03-环形单项链表.iml" filepath="$PROJECT_DIR$/day03-环形单项链表/day03-环形单项链表.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day03_Sort/day03_Sort.iml" filepath="$PROJECT_DIR$/day03_Sort/day03_Sort.iml" />
       <module fileurl="file://$PROJECT_DIR$/day04-stack/day04-stack.iml" filepath="$PROJECT_DIR$/day04-stack/day04-stack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day05-SearchAlgorithm/day05-SearchAlgorithm.iml" filepath="$PROJECT_DIR$/day05-SearchAlgorithm/day05-SearchAlgorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day06-NiukeProgrammingQuestions/day06-NiukeProgrammingQuestions.iml" filepath="$PROJECT_DIR$/day06-NiukeProgrammingQuestions/day06-NiukeProgrammingQuestions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day07-hash/day07-hash.iml" filepath="$PROJECT_DIR$/day07-hash/day07-hash.iml" />
     </modules>
   </component>
 </project>

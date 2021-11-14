@@ -30,11 +30,20 @@ public class SortTest01 {
         //System.out.println(Arrays.toString(arr));
 
     }
-    public static void sort(int[] arr){
-        int temp=0;
-        boolean flag=false;
 
+    /**
+     * 冒泡排序
+     * @param arr
+     *
+     */
+    public static void sort(int[] arr){
+        //设置一个临时变量
+        int temp=0;
+        //设置一个flag
+        boolean flag=false;
+        //从0开始，到最后一个-1；
         for(int i=0;i<arr.length-1;i++){
+
             for(int j=0;j< arr.length-1-i;j++){
                 if (arr[j]>arr[j+1]){
                     flag=true;

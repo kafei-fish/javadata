@@ -1,24 +1,36 @@
 package com.lxl.tree;
 
+import org.junit.Test;
+
 import java.nio.file.ClosedWatchServiceException;
 import java.util.*;
 
 /**
+ * 赫夫曼压缩
  * @author MyLong
  */
 public class HuffmanCompressionDemo {
     public static void main(String[] args) {
-        String content="i like like like java do you like java";
+        String content="i like like like java do you like a java";
         byte[] contentBytes = content.getBytes();
-        List<NodeTwo> nodes = getNodes(contentBytes);
-        System.out.println("nodes"+nodes);
-        NodeTwo nodeTwo = creatHuffmanTree(nodes);
-        perOrder(nodeTwo);
-
-        getCode(nodeTwo,"",stringBuilder);
-        System.out.println("生成的赫夫曼编码表"+huffmanCodes);
-
+        System.out.println(contentBytes.length);
+        byte[] zip = huffmanZip(contentBytes);
+        System.out.println("huffmanZip=>"+Arrays.toString(zip)+"长度=>"+zip.length);
     }
+
+    /**
+     * 把所以的方法都合并成一个方法
+     * @param contentBytes
+     * @return
+     */
+    public static byte[] huffmanZip(byte[] contentBytes){
+        List<NodeTwo> nodes = getNodes(contentBytes);
+        NodeTwo nodeTwo = creatHuffmanTree(nodes);
+        Map<Byte, String> code = getCode(nodeTwo);
+        byte[] zip = zip(contentBytes, code );
+        return zip;
+    }
+
 
     /**
      * 获取node结点的data和val
@@ -110,6 +122,50 @@ public class HuffmanCompressionDemo {
                 huffmanCodes.put(node.data,stringBuilder1.toString());
             }
         }
+    }
+
+    /**
+     * 赫夫曼压缩
+     * @param bytes 字节数组
+     * @param huffmanCodes map集合
+     * @return 返回一个已经处理完毕的字符数组
+     */
+    public static byte[] zip(byte[] bytes,Map<Byte,String > huffmanCodes){
+        StringBuilder stringBuilder=new StringBuilder();
+        for (byte b : bytes) {
+            stringBuilder.append(huffmanCodes.get(b));
+
+        }
+        //判断长度取模8是否为0
+        int len;
+        if(stringBuilder.length()%8==0){
+            //如果为0就除8
+            len=stringBuilder.length()/8;
+        }else {
+            //否则就除8之后+1；
+            len=stringBuilder.length()/8+1;
+        }
+        //初始化字符数组的长度
+        byte[] huffmanCodeBytes=new byte[len];
+        //设置一个下标
+        int index=0;
+        //遍历StringBuufer，设置步长为8
+        for(int i=0;i<stringBuilder.length();i+=8){
+            //设置一个字符串用来接受拼接完成的字符字符串
+            String strByte;
+            //如果i+8大于字符包装流的长度，设置返回一个新的 String ，其中包含此字符序列中当前包含的字符的子序列。
+            if(i+8>stringBuilder.length()){
+                strByte=stringBuilder.substring(i);
+            }else {
+                //否则就返回字符串中的8ge
+                strByte=stringBuilder.substring(i,i+8);
+            }
+            //然后将使用Interger.parseInt将二进制转换成十进制
+            huffmanCodeBytes[index] = (byte)Integer.parseInt(strByte, 2);
+            //index++ 每次+1
+            index++;
+        }
+        return huffmanCodeBytes;
     }
 }
 class NodeTwo implements Comparable<NodeTwo>{
